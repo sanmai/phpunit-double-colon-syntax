@@ -22,6 +22,9 @@ PHPUNIT_GROUP=default
 PHPUNIT_ARGS=--coverage-xml=build/logs/coverage-xml --log-junit=build/logs/junit.xml $(PHPUNIT_COVERAGE_CLOVER)
 export XDEBUG_MODE=coverage
 
+# ParaTest
+PARATEST=vendor/bin/paratest
+
 # PHPStan
 PHPSTAN=vendor/bin/phpstan
 PHPSTAN_ARGS=analyse -c .phpstan.neon
@@ -47,6 +50,7 @@ all: test
 
 ci-test: SILENT=
 ci-test: prerequisites
+	$(SILENT) $(PHP) $(PARATEST)
 	$(SILENT) $(PHP) $(PHPUNIT) $(PHPUNIT_COVERAGE_CLOVER) --group=$(PHPUNIT_GROUP)
 
 ci-analyze: SILENT=
@@ -84,6 +88,7 @@ test-prerequisites: prerequisites composer.lock
 
 .PHONY: phpunit
 phpunit: cs
+	$(SILENT) $(PHP) $(PARATEST)
 	rm -fr build/logs/*
 	$(SILENT) $(PHP) $(PHPUNIT) $(PHPUNIT_ARGS)
 
