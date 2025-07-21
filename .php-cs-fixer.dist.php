@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2025, Alexey Kopytko. All rights reserved.
  *
