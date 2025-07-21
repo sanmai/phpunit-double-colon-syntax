@@ -1,0 +1,15 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        -
+            identifier: method.alreadyNarrowedType
+            path: tests/
+        -
+            identifier: missingType.iterableValue
+            path: tests/
+        -
+            identifier: argument.type
+            path: tests/

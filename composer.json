@@ -1,0 +1,48 @@
+{
+    "name": "sanmai/phpunit-double-colon-syntax",
+    "description": "Double Colon Syntax for PHPUnit",
+    "license": "BSD-3-Clause",
+    "type": "library",
+    "keywords": [
+        "dev",
+        "phpunit",
+        "testing"
+    ],
+    "authors": [
+        {
+            "name": "Alexey Kopytko",
+            "email": "alexey@kopytko.com"
+        }
+    ],
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.8",
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "infection/infection": ">=0.30.3",
+        "php-coveralls/php-coveralls": "^2.4.1",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2",
+        "phpunit/phpunit": "^12.2",
+        "sanmai/phpstan-rules": "^0.3.7",
+        "vimeo/psalm": ">=2"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpunitDoubleColonExtension\\": "src/"
+        },
+        "files": [
+            "src/phpunit.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}
