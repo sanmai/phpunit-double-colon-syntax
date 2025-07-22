@@ -3,8 +3,8 @@ PHPUnit finds the only one test
 --FILE--
 <?php
 ob_start();
-passthru('./vendor/bin/phpunit tests/ExampleTest.php::testItWorks');
-passthru('./vendor/bin/phpunit tests/ExampleTest.php::test_one tests/ExampleTest.php::test_two');
+passthru('./vendor/bin/phpunit tests/ExampleTest.php::testItWorks 2>/dev/null');
+passthru('./vendor/bin/phpunit tests/ExampleTest.php::test_one tests/ExampleTest.php::test_two 2>/dev/null');
 
 preg_match_all('/OK.*/', ob_get_clean(), $matches);
 
