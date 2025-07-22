@@ -36,8 +36,7 @@ namespace PhpunitDoubleColonExtension;
 
 use function implode;
 use function preg_match;
-use function str_contains;
-use function str_starts_with;
+use function strpos;
 use function strrpos;
 use function substr;
 use function in_array;
@@ -55,7 +54,7 @@ class ArgumentTransformer
     public static function canTransform(array $argv): bool
     {
         foreach ($argv as $arg) {
-            if (str_starts_with($arg, '--filter')) {
+            if (0 === strpos($arg, '--filter')) {
                 return false;
             }
         }
@@ -87,13 +86,13 @@ class ArgumentTransformer
 
         foreach ($argv as $arg) {
             // Skip option flags (starting with -)
-            if (str_starts_with($arg, '-')) {
+            if (0 === strpos($arg, '-')) {
                 $transformedArgv[] = $arg;
                 continue;
             }
 
             // Check for double colon syntax - must be at the end for file::method
-            if (!str_contains($arg, '::')) {
+            if (false === strpos($arg, '::')) {
                 // Regular argument, pass through
                 $transformedArgv[] = $arg;
                 continue;
@@ -142,6 +141,6 @@ class ArgumentTransformer
      */
     public static function isPhpUnitExecution(string $programName): bool
     {
-        return str_contains($programName, 'vendor/bin/phpunit');
+        return false !== strpos($programName, 'vendor/bin/phpunit');
     }
 }
