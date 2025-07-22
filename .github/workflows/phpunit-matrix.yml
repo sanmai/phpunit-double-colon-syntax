@@ -41,8 +41,17 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
-          cache: composer
           ini-values: error_reporting='E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer
+          key: composer-${{ matrix.php }}-${{ matrix.phpunit }}-${{ hashFiles('composer.*') }}
+          restore-keys: |
+            composer-${{ matrix.php }}-${{ matrix.phpunit }}-
+            composer-${{ matrix.php }}-
+            composer-
 
       - name: Install dependencies
         run: |
