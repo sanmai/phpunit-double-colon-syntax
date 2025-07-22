@@ -61,8 +61,8 @@ jobs:
       - name: Install dependencies
         run: |
           composer remove --no-update --dev $(jq -r '.["require-dev"] | keys[]' composer.json)
-          composer require --no-update --dev --ignore-platform-reqs phpunit/phpunit:^${{ matrix.phpunit }}
-          composer install --no-interaction --prefer-dist --no-progress --ignore-platform-reqs
+          composer require --no-update --dev phpunit/phpunit:^${{ matrix.phpunit }}
+          composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run e2e test
         run: |
