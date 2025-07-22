@@ -1,3 +1,6 @@
+# yamllint disable rule:line-length
+# yamllint disable rule:braces
+
 name: PHPUnit Version Matrix
 
 on:
@@ -43,12 +46,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer remove --no-update --dev \
-              $(jq -r '.["require-dev"] | keys[]' composer.json)
-          composer require --no-update --dev --ignore-platform-reqs \
-              phpunit/phpunit:^${{ matrix.phpunit }}
-          composer install --no-interaction --prefer-dist \
-              --no-progress --ignore-platform-reqs
+          composer remove --no-update --dev $(jq -r '.["require-dev"] | keys[]' composer.json)
+          composer require --no-update --dev --ignore-platform-reqs phpunit/phpunit:^${{ matrix.phpunit }}
+          composer install --no-interaction --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Run e2e test
         run: |
