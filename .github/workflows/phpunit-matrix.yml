@@ -44,7 +44,7 @@ jobs:
         run: |
           composer remove --no-update --dev \
               $(jq -r '.["require-dev"] | keys[]' composer.json)
-          composer require --no-update --dev \
+          composer require --no-update --dev --ignore-platform-reqs \
               phpunit/phpunit:^${{ matrix.phpunit }}
           composer install --no-interaction --prefer-dist --no-progress
 
