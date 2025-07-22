@@ -3,6 +3,8 @@ parameters:
     paths:
         - src
         - tests
+    excludePaths:
+        - tests/integration
     ignoreErrors:
         -
             identifier: method.alreadyNarrowedType

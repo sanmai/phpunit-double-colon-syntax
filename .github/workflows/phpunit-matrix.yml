@@ -1,0 +1,67 @@
+# yamllint disable rule:line-length
+# yamllint disable rule:braces
+
+name: PHPUnit Version Matrix
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - php: "7.1"
+            phpunit: "6"
+          - php: "7.2"
+            phpunit: "6"
+          - php: "7.3"
+            phpunit: "7"
+          - php: "7.4"
+            phpunit: "8"
+          - php: "8.0"
+            phpunit: "9"
+          - php: "8.1"
+            phpunit: "10"
+          - php: "8.2"
+            phpunit: "11"
+          - php: "8.3"
+            phpunit: "12"
+
+    name: PHP ${{ matrix.php }} with PHPUnit ${{ matrix.phpunit }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          ini-values: error_reporting='E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer
+          key: composer-${{ matrix.php }}-${{ matrix.phpunit }}-${{ hashFiles('composer.*') }}
+          restore-keys: |
+            composer-${{ matrix.php }}-${{ matrix.phpunit }}-
+            composer-${{ matrix.php }}-
+            composer-
+
+
+      - name: Install dependencies
+        run: |
+          composer remove --no-update --dev $(jq -r '.["require-dev"] | keys[]' composer.json)
+          composer require --no-update --dev phpunit/phpunit:^${{ matrix.phpunit }}
+          composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Run e2e test
+        run: |
+          php vendor/bin/phpunit --debug tests/integration/e2e.phpt

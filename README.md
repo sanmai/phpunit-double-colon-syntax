@@ -20,7 +20,7 @@ But before...
 composer require --dev sanmai/phpunit-double-colon-syntax
 ```
 
-That's it! No configuration needed.
+That's it! No configuration needed. Works with PHPUnit 6 and above.
 
 ## Usage
 
