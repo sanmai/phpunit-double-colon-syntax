@@ -39,6 +39,7 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
           cache: composer
+          ini-values: error_reporting='E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED'
 
       - name: Install dependencies
         run: |
