@@ -42,8 +42,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer remove --no-update --dev $(jq -r '.["require-dev"] | keys[]' composer.json)
-          composer require "phpunit/phpunit:${{ matrix.phpunit }}" --no-update --dev
+          composer remove --no-update --dev \
+              $(jq -r '.["require-dev"] | keys[]' composer.json)
+          composer require --no-update --dev \
+              "phpunit/phpunit:${{ matrix.phpunit }}"
           composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run e2e test
