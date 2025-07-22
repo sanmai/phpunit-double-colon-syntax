@@ -46,7 +46,8 @@ jobs:
               $(jq -r '.["require-dev"] | keys[]' composer.json)
           composer require --no-update --dev --ignore-platform-reqs \
               phpunit/phpunit:^${{ matrix.phpunit }}
-          composer install --no-interaction --prefer-dist --no-progress
+          composer install --no-interaction --prefer-dist \
+              --no-progress --ignore-platform-reqs
 
       - name: Run e2e test
         run: |
