@@ -16,6 +16,10 @@ jobs:
     strategy:
       matrix:
         include:
+          - php: "7.0"
+            phpunit: "6"
+          - php: "7.1"
+            phpunit: "6"
           - php: "7.2"
             phpunit: "6"
           - php: "7.3"
