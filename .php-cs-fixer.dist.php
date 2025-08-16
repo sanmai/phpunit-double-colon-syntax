@@ -63,6 +63,7 @@ $config
         'strict_comparison' => true,
         'yoda_style' => true,
         'array_indentation' => true,
+        'operator_linebreak' => ['only_booleans' => true],
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

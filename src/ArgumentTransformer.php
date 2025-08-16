@@ -46,6 +46,8 @@ use function in_array;
  */
 class ArgumentTransformer
 {
+    private function __construct() {}
+
     /**
      * Whenever args can be transformed.
      * @param array<int, string> $argv
