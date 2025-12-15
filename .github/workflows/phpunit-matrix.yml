@@ -46,7 +46,7 @@ jobs:
           ini-values: error_reporting='E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED'
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/composer
           key: composer-${{ matrix.php }}-${{ matrix.phpunit }}-${{ hashFiles('composer.*') }}
