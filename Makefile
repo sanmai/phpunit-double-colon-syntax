@@ -145,7 +145,3 @@ test-all: $(PHP_VERSIONS)
 .PHONY: $(PHP_VERSIONS)
 $(PHP_VERSIONS): cs
 	@if command -v $@; then make --no-print-directory PHP=$@ PHP_CS_FIXER=/bin/true phpunit; fi
-
-.PHONY: docs
-docs:
-	mkdocs serve
