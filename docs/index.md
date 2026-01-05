@@ -51,6 +51,7 @@ All PHP versions 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4 and above support i
 
 If you see errors like:
 
+- `Test file "tests/ExampleTest.php::testFoo" not found`
 - `Cannot open file tests/ExampleTest.php::test_method`
 - `No tests found in tests/ExampleTest.php::testFoo`
 
