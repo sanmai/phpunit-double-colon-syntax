@@ -32,6 +32,8 @@ jobs:
             phpunit: "11"
           - php: "8.3"
             phpunit: "12"
+          - php: "8.4"
+            phpunit: "13"
 
     name: PHP ${{ matrix.php }} with PHPUnit ${{ matrix.phpunit }}
 
@@ -54,7 +56,6 @@ jobs:
             composer-${{ matrix.php }}-${{ matrix.phpunit }}-
             composer-${{ matrix.php }}-
             composer-
-
 
       - name: Install dependencies
         run: |
