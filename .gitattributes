@@ -3,6 +3,7 @@
 /*.dist               export-ignore
 /*.xml.*              export-ignore
 /tests                export-ignore
+/docs                 export-ignore
 /*.y*ml               export-ignore
 
 # Test with:
