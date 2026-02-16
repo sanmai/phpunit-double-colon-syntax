@@ -26,7 +26,7 @@
         "php-coveralls/php-coveralls": "^2.4.1",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2",
-        "phpunit/phpunit": "^11 || ^12.2",
+        "phpunit/phpunit": "^11 || ^12.2 || ^13",
         "sanmai/phpstan-rules": "^0.3.7"
     },
     "autoload": {
