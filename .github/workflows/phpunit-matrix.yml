@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer remove --no-update --dev $(jq -r '.["require-dev"] | keys[]' composer.json)
-          composer config audit.block-insecure false
+          composer config audit.block-insecure false || true
           composer require --no-update --dev phpunit/phpunit:^${{ matrix.phpunit }}
           composer install --no-interaction --prefer-dist --no-progress
 
