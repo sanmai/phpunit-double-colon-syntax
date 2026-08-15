@@ -3,6 +3,7 @@
     "description": "Double Colon Syntax for PHPUnit",
     "license": "BSD-3-Clause",
     "type": "library",
+    "abandoned": true,
     "keywords": [
         "dev",
         "phpunit",
