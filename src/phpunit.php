@@ -48,4 +48,4 @@ if (!ArgumentTransformer::isPhpUnitExecution($_SERVER['argv'][0] ?? '')) {
 }
 
 // Transform global argv if we're running PHPUnit and have double colon syntax
-$_SERVER['argv'] = ArgumentTransformer::transform($_SERVER['argv']);
+$_SERVER['argv'] = ArgumentTransformer::transform($_SERVER['argv']); // @phpstan-ignore argument.type
