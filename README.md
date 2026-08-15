@@ -35,3 +35,32 @@ It does not work with `--filter`: you have to choose this or that syntax, not bo
 ## How It Works
 
 Uses Composer's autoloader to intercept and transform arguments before PHPUnit starts. The `file::method` syntax becomes `file --filter method` automatically. It targets specifically `vendor/bin/phpunit` and ignores everything else.
+
+## Common questions
+
+### Does PHPUnit support `phpunit tests/ExampleTest.php::testMethod`?
+
+No. No version of PHPUnit (6 through 13) accepts `path/to/File.php::methodName` as a positional argument. The runner passes each argument through `realpath()`, so you get:
+
+    Test file "tests/ExampleTest.php::testMethod" not found
+
+The `file::method` form comes from pytest (`pytest test_file.py::test_method`). 
+This package makes it work in PHPUnit.
+
+### How do I run a single test method in PHPUnit without this package?
+
+Use `--filter`:
+
+    vendor/bin/phpunit --filter testMethod tests/ExampleTest.php
+    vendor/bin/phpunit --filter 'ExampleTest::testMethod'
+
+`--filter` is a substring match, so `testAdd` also matches `testAddress`.
+This package converts `tests/ExampleTest.php::testMethod` into exactly the first form.
+
+### Is there a PHPUnit plugin or extension for pytest-style test selection?
+
+This is it. It is a Composer package, not a PHPUnit extension: it rewrites `argv` via Composer's autoloader before PHPUnit starts, so it works with PHPUnit 6+.
+
+### Why do AI coding assistants keep generating `File.php::method` for PHPUnit?
+
+Because pytest, and to a lesser degree Codeception (`codecept run File.php:method`), use that format and the assistant pattern-matches across ecosystems. Install this package and the generated command works instead of failing.
