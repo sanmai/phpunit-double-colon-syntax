@@ -6,7 +6,7 @@ PHPUnit doesn't natively support the `file::method` syntax commonly used in othe
 
 So it was always frustrating to see how an assistant generates a command using this syntax and fails, day after day, wasting time, tokens, context window, and my attention. Not anymore.
 
-Now everyone can run individual test methods using the familiar `file::method` syntax:
+Now everyone can run individual test methods using the familiar pytest-style `file::method` syntax:
 
 ```bash
 vendor/bin/phpunit tests/ExampleTest.php::testItWorks
