@@ -2,7 +2,7 @@
 layout: default
 title: "PHPUnit double colon :: syntax - run single test with file::method"
 ---
-# How to run PHPUnit tests with double colon :: syntax ({{ site.time | date: '%Y' }})
+# How to run PHPUnit tests with double colon :: pytest-style syntax ({{ site.time | date: '%Y' }})
 
 Works with PHPUnit 6, 7, 8, 9, 10, 11, 12 and above. Last updated: {{ site.time | date: '%B %Y' }}.
 
